@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://xp1uoqfeikk3"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_eqr4n"]
+[ext_resource type="Texture2D" uid="uid://bwjugpqkswx1m" path="res://Assets/menu_background.png" id="1_k7s2j"]
+[ext_resource type="Theme" uid="uid://brjsev6xrlbfc" path="res://pixel_text.tres" id="2_2cvnv"]
+[ext_resource type="Texture2D" uid="uid://lrj3k0rsgk8e" path="res://Assets/button.png" id="3_402h5"]
+[ext_resource type="Texture2D" uid="uid://cnwsex8bi4wnn" path="res://Assets/exit_button.png" id="4_07ewq"]
+[ext_resource type="AudioStream" uid="uid://cfbhk4m6y8vx8" path="res://SFX/mixkit-mouse-click-close-1113.mp3" id="6_rydmb"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eqr4n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 688.0
+offset_bottom = 608.0
+texture = ExtResource("1_k7s2j")
+
+[node name="wins" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 82.0
+offset_top = 63.0
+offset_right = 474.0
+offset_bottom = 175.0
+theme = ExtResource("2_2cvnv")
+text = "OTHELLO"
+horizontal_alignment = 1
+
+[node name="Play Button" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 128.0
+offset_top = 216.0
+offset_right = 416.0
+offset_bottom = 312.0
+texture_normal = ExtResource("3_402h5")
+
+[node name="Label" type="Label" parent="Play Button"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 29.0
+offset_right = 287.0
+offset_bottom = 85.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("2_2cvnv")
+theme_override_colors/font_color = Color(0.462745, 0.313726, 0.180392, 1)
+theme_override_font_sizes/font_size = 64
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WhiteScore" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 554.0
+offset_top = 224.0
+offset_right = 666.0
+offset_bottom = 280.0
+theme = ExtResource("2_2cvnv")
+theme_override_font_sizes/font_size = 64
+text = "00"
+horizontal_alignment = 1
+
+[node name="BlackScore" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 554.0
+offset_top = 432.0
+offset_right = 666.0
+offset_bottom = 488.0
+theme = ExtResource("2_2cvnv")
+theme_override_font_sizes/font_size = 64
+text = "00"
+horizontal_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 544.0
+offset_top = 536.0
+offset_right = 672.0
+offset_bottom = 592.0
+texture_normal = ExtResource("4_07ewq")
+
+[node name="Label" type="Label" parent="Exit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -6.00003
+offset_top = 15.0
+offset_right = 234.0
+offset_bottom = 71.0
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("2_2cvnv")
+theme_override_font_sizes/font_size = 64
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rydmb")
+
+[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

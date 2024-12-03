@@ -1,0 +1,101 @@
+[gd_scene load_steps=17 format=3 uid="uid://b06lcklw4x62v"]
+
+[ext_resource type="Texture2D" uid="uid://c2r3rj8mtnadk" path="res://Assets/othello_board.png" id="1_on3ma"]
+[ext_resource type="Texture2D" uid="uid://drxubux1vesw5" path="res://Assets/othello_stock.png" id="2_ijtvh"]
+[ext_resource type="Script" path="res://Scripts/pieces_stock.gd" id="3_cjh2s"]
+[ext_resource type="Script" path="res://Scripts/piece_manager.gd" id="4_1bjxq"]
+[ext_resource type="PackedScene" uid="uid://b1eclhtkqqdoc" path="res://Scenes/piece.tscn" id="5_s5d5s"]
+[ext_resource type="PackedScene" uid="uid://cgc74vmru7np4" path="res://Scenes/indicator.tscn" id="6_pdvlp"]
+[ext_resource type="Texture2D" uid="uid://clebpssu6278f" path="res://Assets/othello_pieces.png" id="7_t8djo"]
+[ext_resource type="Script" path="res://Scripts/turn_indicator.gd" id="8_ch00h"]
+[ext_resource type="FontFile" uid="uid://ckjmd4g7odu4v" path="res://m6x11.ttf" id="9_3x70a"]
+[ext_resource type="Script" path="res://Scripts/piece_label.gd" id="9_ufpdn"]
+[ext_resource type="Shader" path="res://balance.gdshader" id="10_k8ii5"]
+[ext_resource type="Texture2D" uid="uid://c2wqdf2id0xcv" path="res://Assets/balance_indicator.png" id="10_wjgk6"]
+[ext_resource type="AudioStream" uid="uid://bq6t3rsmhkmty" path="res://SFX/mixkit-on-or-off-light-switch-tap-2585.mp3" id="13_rt5a4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfaft"]
+atlas = ExtResource("2_ijtvh")
+region = Rect2(0, 0, 64, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kvpo"]
+atlas = ExtResource("7_t8djo")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_64nlq"]
+shader = ExtResource("10_k8ii5")
+shader_parameter/white_color = Color(0.984314, 0.87451, 0.607843, 1)
+shader_parameter/black_color = Color(0.309804, 0.168627, 0.141176, 1)
+shader_parameter/balance = 0.5
+
+[node name="Main" type="Node2D"]
+
+[node name="Board Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(344, 304)
+scale = Vector2(8, 8)
+texture = ExtResource("1_on3ma")
+
+[node name="Pieces Stock" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(272, 568)
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_kfaft")
+script = ExtResource("3_cjh2s")
+
+[node name="Piece Manager" type="Node2D" parent="." node_paths=PackedStringArray("piece_stock", "balance_indicator", "audio_stream")]
+position = Vector2(16, 16)
+script = ExtResource("4_1bjxq")
+piece_scene = ExtResource("5_s5d5s")
+indicator_scene = ExtResource("6_pdvlp")
+piece_stock = NodePath("../Pieces Stock")
+balance_indicator = NodePath("../BalanceIndicator")
+audio_stream = NodePath("../AudioStreamPlayer")
+
+[node name="Turn Indicator" type="Sprite2D" parent="." node_paths=PackedStringArray("piece_manager")]
+texture_filter = 1
+position = Vector2(608, 80)
+scale = Vector2(8, 8)
+texture = SubResource("AtlasTexture_7kvpo")
+script = ExtResource("8_ch00h")
+piece_manager = NodePath("../Piece Manager")
+
+[node name="White Label" type="Label" parent="." node_paths=PackedStringArray("piece_manager")]
+texture_filter = 1
+offset_left = 554.0
+offset_top = 268.0
+offset_right = 666.0
+offset_bottom = 380.0
+theme_override_fonts/font = ExtResource("9_3x70a")
+theme_override_font_sizes/font_size = 64
+text = "02"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_ufpdn")
+piece_manager = NodePath("../Piece Manager")
+PIECE_TYPE = 0
+
+[node name="Black Label" type="Label" parent="." node_paths=PackedStringArray("piece_manager")]
+texture_filter = 1
+offset_left = 554.0
+offset_top = 476.0
+offset_right = 666.0
+offset_bottom = 588.0
+theme_override_fonts/font = ExtResource("9_3x70a")
+theme_override_font_sizes/font_size = 64
+text = "02"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_ufpdn")
+piece_manager = NodePath("../Piece Manager")
+PIECE_TYPE = 1
+
+[node name="BalanceIndicator" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_64nlq")
+position = Vector2(608, 168)
+scale = Vector2(8, 8)
+texture = ExtResource("10_wjgk6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_rt5a4")

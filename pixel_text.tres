@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brjsev6xrlbfc"]
+
+[ext_resource type="FontFile" uid="uid://ckjmd4g7odu4v" path="res://m6x11.ttf" id="1_xl2rm"]
+
+[resource]
+default_font = ExtResource("1_xl2rm")
+default_font_size = 128

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgc74vmru7np4"]
+
+[ext_resource type="Texture2D" uid="uid://hw2anh101ut" path="res://Assets/indicator.png" id="1_dx3qm"]
+
+[node name="Indicator" type="Node2D" groups=["indicator"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(8, 8)
+texture = ExtResource("1_dx3qm")

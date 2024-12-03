@@ -1,0 +1,143 @@
+[gd_scene load_steps=8 format=3 uid="uid://d4cojbi10o2l5"]
+
+[ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_nkgcd"]
+[ext_resource type="Texture2D" uid="uid://bwjugpqkswx1m" path="res://Assets/menu_background.png" id="1_nw653"]
+[ext_resource type="Theme" uid="uid://brjsev6xrlbfc" path="res://pixel_text.tres" id="2_sbx3s"]
+[ext_resource type="Texture2D" uid="uid://cnwsex8bi4wnn" path="res://Assets/exit_button.png" id="5_p1t5d"]
+[ext_resource type="AudioStream" uid="uid://cfbhk4m6y8vx8" path="res://SFX/mixkit-mouse-click-close-1113.mp3" id="6_ceqjv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dbh2"]
+load_path = "res://.godot/imported/button.png-d4bb17da3f94b7644d9f7ab72b126dae.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vof5d"]
+load_path = "res://.godot/imported/button.png-d4bb17da3f94b7644d9f7ab72b126dae.ctex"
+
+[node name="End Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nkgcd")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 688.0
+offset_bottom = 608.0
+texture = ExtResource("1_nw653")
+
+[node name="wins" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 128.0
+offset_top = 57.0
+offset_right = 420.0
+offset_bottom = 284.0
+theme = ExtResource("2_sbx3s")
+text = "BLACK
+WINS!"
+horizontal_alignment = 1
+
+[node name="MenuButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 128.0
+offset_top = 320.0
+offset_right = 164.0
+offset_bottom = 332.0
+texture_normal = SubResource("CompressedTexture2D_3dbh2")
+
+[node name="Label" type="Label" parent="MenuButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 96.0
+offset_top = 28.0
+offset_right = 216.0
+offset_bottom = 84.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("2_sbx3s")
+theme_override_colors/font_color = Color(0.462745, 0.313726, 0.180392, 1)
+theme_override_font_sizes/font_size = 64
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AgainButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 128.0
+offset_top = 440.0
+offset_right = 164.0
+offset_bottom = 452.0
+texture_normal = SubResource("CompressedTexture2D_vof5d")
+
+[node name="Label" type="Label" parent="AgainButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 47.0
+offset_top = 29.0
+offset_right = 287.0
+offset_bottom = 85.0
+scale = Vector2(0.8, 0.8)
+theme = ExtResource("2_sbx3s")
+theme_override_colors/font_color = Color(0.462745, 0.313726, 0.180392, 1)
+theme_override_font_sizes/font_size = 64
+text = "Play Again"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WhiteScore" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 554.0
+offset_top = 224.0
+offset_right = 666.0
+offset_bottom = 280.0
+theme = ExtResource("2_sbx3s")
+theme_override_font_sizes/font_size = 64
+text = "00"
+horizontal_alignment = 1
+
+[node name="BlackScore" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 554.0
+offset_top = 432.0
+offset_right = 666.0
+offset_bottom = 488.0
+theme = ExtResource("2_sbx3s")
+theme_override_font_sizes/font_size = 64
+text = "00"
+horizontal_alignment = 1
+
+[node name="Exit" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 544.0
+offset_top = 536.0
+offset_right = 672.0
+offset_bottom = 592.0
+texture_normal = ExtResource("5_p1t5d")
+
+[node name="Label" type="Label" parent="Exit"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -6.00003
+offset_top = 15.0
+offset_right = 234.0
+offset_bottom = 71.0
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("2_sbx3s")
+theme_override_font_sizes/font_size = 64
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ceqjv")
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="AgainButton" to="." method="_on_again_button_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
