@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cgc74vmru7np4" path="res://Scenes/indicator.tscn" id="6_pdvlp"]
 [ext_resource type="Texture2D" uid="uid://clebpssu6278f" path="res://Assets/othello_pieces.png" id="7_t8djo"]
 [ext_resource type="Script" path="res://Scripts/turn_indicator.gd" id="8_ch00h"]
-[ext_resource type="FontFile" uid="uid://ckjmd4g7odu4v" path="res://m6x11.ttf" id="9_3x70a"]
+[ext_resource type="FontFile" uid="uid://ckjmd4g7odu4v" path="res://Misc/m6x11.ttf" id="9_3x70a"]
 [ext_resource type="Script" path="res://Scripts/piece_label.gd" id="9_ufpdn"]
-[ext_resource type="Shader" path="res://balance.gdshader" id="10_k8ii5"]
+[ext_resource type="Shader" path="res://Misc/balance.gdshader" id="10_k8ii5"]
 [ext_resource type="Texture2D" uid="uid://c2wqdf2id0xcv" path="res://Assets/balance_indicator.png" id="10_wjgk6"]
 [ext_resource type="AudioStream" uid="uid://bq6t3rsmhkmty" path="res://SFX/mixkit-on-or-off-light-switch-tap-2585.mp3" id="13_rt5a4"]
 

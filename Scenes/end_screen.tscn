@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/end_screen.gd" id="1_nkgcd"]
 [ext_resource type="Texture2D" uid="uid://bwjugpqkswx1m" path="res://Assets/menu_background.png" id="1_nw653"]
-[ext_resource type="Theme" uid="uid://brjsev6xrlbfc" path="res://pixel_text.tres" id="2_sbx3s"]
+[ext_resource type="Theme" uid="uid://brjsev6xrlbfc" path="res://Misc/pixel_text.tres" id="2_sbx3s"]
 [ext_resource type="Texture2D" uid="uid://cnwsex8bi4wnn" path="res://Assets/exit_button.png" id="5_p1t5d"]
 [ext_resource type="AudioStream" uid="uid://cfbhk4m6y8vx8" path="res://SFX/mixkit-mouse-click-close-1113.mp3" id="6_ceqjv"]
 
