@@ -1,5 +1,7 @@
 extends Control
 
+# COMMIT
+
 func _ready() -> void:
 	var white_score = GameManager.white_wins
 	var black_score = GameManager.black_wins
